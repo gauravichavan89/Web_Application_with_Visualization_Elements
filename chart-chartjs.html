@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Charts and To-Do">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative - Charts and To-Do">
+    <style>
+    * {
+    box-sizing: border-box;
+    }
+    /* Create two equal columns that floats next to each other */
+    .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+    }
+    /* Clear floats after the columns */
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    </style>
+    <title>Charts</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <!--Calendar-->
+    <link href="common/samples.css" rel="stylesheet" />
+    <link href="themes/light.css" rel="stylesheet" />
+    <!-- =======================================================
+    Author: gauravi
+    ======================================================= -->
+  </head>
+  <body>
+    <!-- container section start -->
+    <section id="container" class="">
+      <!--header start-->
+      <header class="header dark-bg">
+        <div class="toggle-nav">
+          <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+        </div>
+        <!--logo start-->
+        <a href="index.html" class="logo">Happiness <span class="lite">Report</span></a>
+        <!--logo end-->
+      </header>
+      <!--header end-->
+      <!--sidebar start-->
+      <aside>
+        <div id="sidebar" class="nav-collapse ">
+          <!-- sidebar menu start-->
+          <ul class="sidebar-menu">
+            <li class="active">
+              <a class="" href="index.html">
+                <i class="icon_house_alt"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a class="" href="chart-chartjs.html">
+                <i class="icon_piechart"></i>
+                <span>Charts</span>
+              </a>
+            </li>
+            <li class="sub-menu">
+              <a class="" href="basic_table.html">
+                <i class="icon_table"></i>
+                <span>Statistics</span>
+              </a>
+            </li>
+          </ul>
+          <!-- sidebar menu end-->
+        </div>
+      </aside>
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 class="page-header"><i class="icon_piechart"></i> Chart</h3>
+              <ol class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+                <li><i class="icon_piechart"></i>Chart</li>
+              </ol>
+            </div>
+          </div>
+          <div class="row col-lg-12">
+            
+            <div class="row">
+              <div class="column" >
+                <div id="chartContainer"   style="height: 300px; width: 100%"></div>
+                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                <script src='https://d3js.org/d3.v4.min.js'></script>
+                <script>
+                var re=[];
+                var ec=[];
+                var fa=[];
+                var he=[];
+                var fr=[];
+                var tr=[];
+                var ge=[];
+                var dr=[];
+                d3.csv("2016.csv",function(csv){
+                csv.map(function(d){
+                re.push(d.Region);
+                ec.push(d.Economy);
+                fa.push(d.Family);
+                he.push(d.Health);
+                tr.push(d.Trust);
+                dr.push(d.DystopiaResidual);
+                fr.push(d.Freedom);
+                ge.push(d.Generosity);
+                });
+                var ecValue=0;
+                var faValue=0;
+                var heValue=0;
+                var frValue=0;
+                var trValue=0;
+                var genValue=0;
+                var dyValue=0;
+                var total=0;
+                for (i=0; i<=re.length;i++){
+                if(re[i]=='North America'){
+                faValue= faValue + parseFloat(fa[i]);
+                genValue = genValue + parseFloat(ge[i]);
+                heValue = heValue + parseFloat(he[i]);
+                ecValue = ecValue + parseFloat(ec[i]);
+                frValue = frValue + parseFloat(fr[i]);
+                trValue = trValue + parseFloat(tr[i]);
+                dyValue = dyValue + parseFloat(dr[i]);
+                total++;
+                }
+                }
+                var aveFa= parseFloat((faValue/total)*100);
+                var aveGe= parseFloat((genValue/total)*100);
+                var aveHe= parseFloat((heValue/total)*100);
+                var aveEc= parseFloat((ecValue/total)*100);
+                var aveFr= parseFloat((frValue/total)*100);
+                var aveTr= parseFloat((trValue/total)*100);
+                var aveDr= parseFloat((dyValue/total)*100);
+                var chart = new CanvasJS.Chart("chartContainer", {
+                theme: "light1", // "light2"
+                exportEnabled: true,
+                animationEnabled: true,
+                title: {
+                text: "See what factors make North America happy"
+                },
+                data: [{
+                type: "pie",
+                startAngle: 25,
+                toolTipContent: "<b>{label}</b>: {y}%",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}%",
+                dataPoints: [
+                { y: parseFloat(aveFa), label: "Family"},
+                { y: parseFloat(aveHe), label: "Health" },
+                { y: parseFloat(aveGe), label: "Generosity" },
+                { y: parseFloat(aveEc), label: "Economy" },
+                { y: parseFloat(aveFr), label: "Freedom" },
+                { y: parseFloat(aveTr), label: "Trust" },
+                { y: parseFloat(aveDr), label: "Dystopia Residual" },
+                ]
+                }]
+                });
+                chart.render();
+                });
+                </script>
+              </div>
+              <div class="column" >
+                <div id="chartContainer1" style="height: 300px; width: 100%"></div>
+                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                <script src='https://d3js.org/d3.v4.min.js'></script>
+                <script>
+                d3.csv("2016.csv",function(csv){
+                var reg=[];
+                var hr=[];
+                var hs=[];
+                csv.map(function(d){
+                reg.push(d.Region);
+                hr.push(d.HappinessRank);
+                hs.push(d.HappinessScore);
+                });
+                var hrValue=0;
+                var hsValue=0;
+                var tl=0;
+                for (i=0; i<=reg.length;i++){
+                if(reg[i]=='North America'){
+                hrValue= hrValue + parseFloat(hr[i]);
+                hsValue = hsValue + parseFloat(hs[i]);
+                tl++;
+                }
+                }
+                var aveHr= parseFloat((hrValue/tl));
+                var aveHs= parseFloat((hsValue/tl));
+                d3.csv("2017.csv",function(csv){
+                var region=[];
+                var hrank=[];
+                var hscore=[];
+                
+                csv.map(function(d){
+                region.push(d.Region);
+                hrank.push(d.HappinessRank);
+                hscore.push(d.HappinessScore);
+                });
+                var hrValue1=0;
+                var hsValue1=0;
+                var tll=0;
+                for (i=0; i<=region.length;i++){
+                if(region[i]=='North America'){
+                hrValue1= hrValue1 + parseFloat(hrank[i]);
+                hsValue1 = hsValue1 + parseFloat(hscore[i]);
+                tll++;
+                }
+                }
+                var aveHr11= parseFloat((hrValue1/tll));
+                var aveHs11= parseFloat((hsValue1/tll));
+                d3.csv("2015.csv",function(csv){
+                var region1=[];
+                var h_rank=[];
+                var h_score=[];
+                csv.map(function(d){
+                region1.push(d.Region);
+                h_rank.push(d.HappinessRank);
+                h_score.push(d.HappinessScore);
+                });
+                var hrValue2=0;
+                var hsValue2=0;
+                var tl2=0;
+                for (i=0; i<=region1.length;i++){
+                if(region1[i]=='North America'){
+                hrValue2= hrValue2 + parseFloat(hr[i]);
+                hsValue2= hsValue2 + parseFloat(hs[i]);
+                tl2++;
+                }
+                }
+                var aveHr_2= parseFloat((hrValue2/tl2));
+                var aveHs_2= parseFloat((hsValue2/tl2));
+                var chart1 = new CanvasJS.Chart("chartContainer1", {
+                theme:"light1",
+                //exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                text: "North America's progress report is here'"
+                },
+                axisY :{
+                includeZero: false,
+                title: "Ranking and Happiness Score",
+                //suffix: "mn"
+                },
+                toolTip: {
+                shared: "true"
+                },
+                legend:{
+                cursor:"pointer",
+                fontSize: 16,
+                itemclick : toggleDataSeries
+                },
+                data: [{
+                type: "spline",
+                showInLegend: true,
+                yValueFormatString: "##",
+                name: "Rank",
+                dataPoints: [
+                { label: "2016", y: parseInt(aveHr)},
+                { label: "2017", y: parseInt(aveHr11)},
+                { label: "2015", y: parseInt(aveHr_2)}
+                ]
+                },
+                {
+                type: "spline",
+                showInLegend: true,
+                yValueFormatString: "##.##",
+                name: "Happiness Score",
+                dataPoints: [
+                { label: "2016", y: parseInt(aveHs)},
+                { label: "2017", y: parseInt(Math.ceil(aveHs11))},
+                { label: "2015", y: parseInt(Math.ceil(aveHs_2))}
+                ]
+                }]
+                });
+                chart1.render();
+                console.log(parseInt(aveHs_2));
+                function toggleDataSeries(e){
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+                }
+                else{
+                e.dataSeries.visible = true;
+                }
+                chart1.render();
+                }
+                });
+                });
+                });
+                </script>
+              </div>
+            </div><br><br>
+
+<div class="row col-lg-12">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    }
+    .active, .accordion:hover {
+    background-color: #ccc;
+    }
+    .accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    }
+    .active:after {
+    content: "\2212";
+    }
+    .panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    }
+    </style>
+  </head>
+  <body>
+    <h2>Frequently Asked Questions</h2>
+    <button class="accordion"><b>Does this website predict the countries that would perform well in the future?</b></button>
+    <div class="panel">
+      <p>No, this website presents just the past records. We hope to serve your request in near future</p>
+    </div>
+    <button class="accordion"><b>Does your website not give average index and factors contributing to the happiness score of all continents?</b></button>
+    <div class="panel">
+      <p>Although we are working on customizing visualized graphs for all the continents, our priority right now is North America.</p>
+    </div>
+    <button class="accordion"><b>Do you have any forum or chat box for publishing comments?</b></button>
+    <div class="panel">
+      <p>We plan on providing an online forum or chat box for enthusiasts of common interests to interact with each other</p>
+    </div>
+    <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+    panel.style.maxHeight = null;
+    } else {
+    panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+    });
+    }
+    </script>
+  </body>
+</div>
+
+            <div class="row">
+              <div style="position: absolute; width: 100%; height: 100%;">
+                <b><h3>Note events that would make you happy...</h2></b>
+                <div id="calendar" style="height: 60%; width:100%;"></div>
+              </div>
+              
+              <script src="MindFusion.Scheduling.js" type="text/javascript"></script>
+              <script src="GoogleSchedule.js" type="text/javascript"></script>
+              <script src="TimeForm.js" type="text/javascript"></script>
+           </div>
+
+
+           <div class="row">
+              <script async type="text/javascript" src="//userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/bd2448a1dd9a50ba30a5f9ec212c2f0946a9204897e63603ff173bdcf514ae2b.js"></script>
+           </div>
+            
+          </section>
+          <!--main content end-->
+        </section>
+        <!-- container section end -->
+        <!-- javascripts -->
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- nice scroll -->
+        <script src="js/jquery.scrollTo.min.js"></script>
+        <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+        <!-- chartjs -->
+        <script src="assets/chart-master/Chart.js"></script>
+        <!-- custom chart script for this page only-->
+        <script src="js/chartjs-custom.js"></script>
+        <!--custome script for all page-->
+        <script src="js/scripts.js"></script>
+      </body>
+    </html>

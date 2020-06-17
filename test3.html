@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="World Happiness Report">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="World Happiness Report">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>Statistics | Comparative Statistics and More</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <!-- =======================================================
+    Author: gauravi
+    ======================================================= -->
+  </head>
+  <body>
+    <!-- container section start -->
+    <section id="container" class="">
+      <!--header start-->
+      <header class="header dark-bg">
+        <div class="toggle-nav">
+          <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+        </div>
+        <!--logo start-->
+        <a href="index.html" class="logo">Happiness <span class="lite">Report</span></a>
+        <!--logo end-->
+      </header>
+      <!--header end-->
+      <!--sidebar start-->
+      <aside>
+        <div id="sidebar" class="nav-collapse ">
+          <!-- sidebar menu start-->
+          <ul class="sidebar-menu">
+            <li class="active">
+              <a class="" href="index.html">
+                <i class="icon_house_alt"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a class="" href="chart-chartjs.html">
+                <i class="icon_piechart"></i>
+                <span>Charts</span>
+              </a>
+            </li>
+            <li class="sub-menu">
+              <a class="" href="basic_table.html">
+                <i class="icon_table"></i>
+                <span>Statistics</span>
+              </a>
+            </li>
+          </ul>
+          <!-- sidebar menu end-->
+        </div>
+      </aside>
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+        <section class="wrapper">
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 class="page-header"><i class="icon_piechart"></i> Statistics</h3>
+              <ol class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+                <li><i class="icon_piechart"></i>Statistics</li>
+              </ol>
+            </div>
+          </div>
+          <div class="row col-lg-12">
+            <div class="row">
+              <div class="column" >
+                <div id="chartContainer" style="height: 320px;></div>
+                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                <script src='https://d3js.org/d3.v4.min.js'></script>
+                <script>
+                d3.csv("2016.csv",function(csv){
+                var reg=[];
+                var hs=[];
+                csv.map(function(d){
+                reg.push(d.Country);
+                hs.push(d.HappinessScore);
+                });
+                var hsValue=0;
+                var hsValued=0;
+                var hsValuei=0;
+                for (i=0; i<=reg.length;i++){
+                if(reg[i]=='Norway'){
+                hsValue = parseFloat(hs[i]);
+                }
+                }
+                for (j=0; j<=reg.length;j++){
+                if(reg[j]=='Denmark'){
+                hsValued = parseFloat(hs[j]);
+                }
+                }
+                for (k=0; k<=reg.length;k++){
+                if(reg[k]=='Iceland'){
+                hsValuei = parseFloat(hs[k]);
+                }
+                }
+                d3.csv("2017.csv",function(csv){
+                var region=[];
+                var hscore=[];
+                
+                csv.map(function(d){
+                region.push(d.Country);
+                hscore.push(d.HappinessScore);
+                });
+                var hsValued1=0;
+                var hsValue1d=0;
+                var hsValue1i=0;
+                for (i=0; i<=region.length;i++){
+                if(region[i]=='Norway'){
+                hsValued1 = parseFloat(hscore[i]);
+                }
+                }
+                for (j=0; j<=region.length;j++){
+                if(region[j]=='Denmark'){
+                hsValue1d = parseFloat(hscore[j]);
+                }
+                }
+                for (k=0; k<=region.length;k++){
+                if(region[k]=='Iceland'){
+                hsValue1i = parseFloat(hscore[k]);
+                }
+                }
+                d3.csv("2015.csv",function(csv){
+                var region1=[];
+                var h_score=[];
+                csv.map(function(d){
+                region1.push(d.Country);
+                h_score.push(d.HappinessScore);
+                });
+                var hsValue2=0;
+                var hsValued2=0;
+                var hsValuei2=0;
+                for (i=0; i<=region1.length;i++){
+                if(region1[i]=='Norway'){
+                hsValue2= parseFloat(h_score[i]);
+                }
+                }
+                for (j=0; j<=region1.length;j++){
+                if(region1[j]=='Denmark'){
+                hsValued2= parseFloat(h_score[j]);
+                }
+                }
+                for (k=0; k<=region1.length;k++){
+                if(region1[k]=='Iceland'){
+                hsValuei2 = parseFloat(h_score[k]);
+                }
+                }
+                var chart = new CanvasJS.Chart("chartContainer", {
+                theme:"light1",
+                //exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                text: "See 2k17's Progress Report here...'"
+                },
+                axisY :{
+                includeZero: false,
+                title: "Happiness Score",
+                //suffix: "mn"
+                },
+                toolTip: {
+                shared: "true"
+                },
+                legend:{
+                cursor:"pointer",
+                fontSize: 16,
+                itemclick : toggleDataSeries
+                },
+                data: [{
+                type: "spline",
+                showInLegend: true,
+                yValueFormatString: "##.##",
+                name: "Norway",
+                dataPoints: [
+                { label: "2015", y: parseFloat(hsValue2)},
+                { label: "2016", y: parseFloat(Math.floor(hsValue))},
+                { label: "2017", y: parseFloat(Math.ceil(hsValued1))}
+                ]
+                },
+                {
+                type: "spline",
+                showInLegend: true,
+                yValueFormatString: "##.##",
+                name: "Denmark",
+                dataPoints: [
+                { label: "2015", y: parseFloat(Math.floor(hsValued2))},
+                { label: "2016", y: parseFloat(Math.ceil(hsValued))},
+                { label: "2017", y: parseFloat(hsValue1d)}
+                ]
+                },
+                {
+                type: "spline",
+                showInLegend: true,
+                yValueFormatString: "##.##",
+                name: "Iceland",
+                dataPoints: [
+                { label: "2015", y: parseFloat(hsValuei2)},
+                { label: "2016", y: parseFloat(Math.ceil(hsValuei))},
+                { label: "2017", y: parseFloat(Math.floor(hsValue1i))}
+                ]
+                },
+                ]
+                });
+                chart.render();
+                function toggleDataSeries(e){
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+                }
+                else{
+                e.dataSeries.visible = true;
+                }
+                chart.render();
+                }
+                });
+                });
+                });
+                </script>
+              </div>
+              <div class="column">
+                <div id="chartContainer1" style="height: 320px;></div>
+                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                <script src='https://d3js.org/d3.v4.min.js'></script>
+                <script>
+                d3.csv("2016.csv",function(csv){
+                var reg3=[];
+                var hs3=[];
+                csv.map(function(d){
+                reg3.push(d.Country);
+                hs3.push(d.HappinessScore);
+                });
+                var hsValue3=0;
+                var hsValued3=0;
+                var hsValuei3=0;
+                for (i=0; i<=reg3.length;i++){
+                if(reg3[i]=='Tanzania'){
+                hsValue3 = parseFloat(hs3[i]);
+                }
+                }
+                for (j=0; j<=reg3.length;j++){
+                if(reg3[j]=='Burundi'){
+                hsValued3 = parseFloat(hs3[j]);
+                }
+                }
+                for (k=0; k<=reg3.length;k++){
+                if(reg3[k]=='Syria'){
+                hsValuei3 = parseFloat(hs3[k]);
+                }
+                }
+                d3.csv("2017.csv",function(csv){
+                var region3=[];
+                var hscore3=[];
+                
+                csv.map(function(d){
+                region3.push(d.Country);
+                hscore3.push(d.HappinessScore);
+                });
+                var hsValued13=0;
+                var hsValue1d3=0;
+                var hsValue1i3=0;
+                for (i=0; i<=region3.length;i++){
+                if(region3[i]=='Tanzania'){
+                hsValued13 = parseFloat(hscore3[i]);
+                }
+                }
+                for (j=0; j<=region3.length;j++){
+                if(region3[j]=='Burundi'){
+                hsValue1d3 = parseFloat(hscore3[j]);
+                }
+                }
+                for (k=0; k<=region3.length;k++){
+                if(region3[k]=='Syria'){
+                hsValue1i3 = parseFloat(hscore3[k]);
+                }
+                }
+                d3.csv("2015.csv",function(csv){
+                var region13=[];
+                var h_score3=[];
+                csv.map(function(d){
+                region13.push(d.Country);
+                h_score3.push(d.HappinessScore);
+                });
+                var hsValue23=0;
+                var hsValued23=0;
+                var hsValuei23=0;
+                for (i=0; i<=region13.length;i++){
+                if(region13[i]=='Tanzania'){
+                hsValue23= parseFloat(h_score3[i]);
+                }
+                }
+                for (j=0; j<=region13.length;j++){
+                if(region13[j]=='Burundi'){
+                hsValued23= parseFloat(h_score3[j]);
+                }
+                }
+                for (k=0; k<=region13.length;k++){
+                if(region13[k]=='Syria'){
+                hsValuei23 = parseFloat(h_score3[k]);
+                }
+                }
+                var chart1 = new CanvasJS.Chart("chartContainer1", {
+                theme:"light1",
+                //exportEnabled: true,
+                animationEnabled: true,
+                title:{
+                text: "We encourage the bottom three to buck up..."
+                },
+                axisY :{
+                includeZero: false,
+                title: "Happiness Score",
+                //suffix: "mn"
+                },
+                toolTip: {
+                shared: "true"
+                },
+                legend:{
+                cursor:"pointer",
+                fontSize: 16,
+                itemclick : toggleDataSeries
+                },
+                data: [{
+                type: "spline",
+                showInLegend: true,
+                yValueFormatString: "##.##",
+                name: "Tanzania",
+                dataPoints: [
+                { label: "2015", y: parseFloat(hsValue23)},
+                { label: "2016", y: parseFloat(Math.floor(hsValue3))},
+                { label: "2017", y: parseFloat(Math.ceil(hsValued13))}
+                ]
+                },
+                {
+                type: "spline",
+                showInLegend: true,
+                yValueFormatString: "##.##",
+                name: "Burundi",
+                dataPoints: [
+                { label: "2015", y: parseFloat(Math.floor(hsValued23))},
+                { label: "2016", y: parseFloat(Math.ceil(hsValued3))},
+                { label: "2017", y: parseFloat(hsValue1d3)}
+                ]
+                },
+                {
+                type: "spline",
+                showInLegend: true,
+                yValueFormatString: "##.##",
+                name: "Syria",
+                dataPoints: [
+                { label: "2015", y: parseFloat(hsValuei23)},
+                { label: "2016", y: parseFloat(Math.ceil(hsValuei3))},
+                { label: "2017", y: parseFloat(Math.floor(hsValue1i3))}
+                ]
+                },
+                ]
+                });
+                chart1.render();
+                function toggleDataSeries(e){
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+                }
+                else{
+                e.dataSeries.visible = true;
+                }
+                chart1.render();
+                }
+                });
+                });
+                });
+                </script>
+              </div>
+            </div>
+          </div><br><br><br>
+          
+          <div class="row">
+            <div class="row">
+              <div class="col-lg-4">
+                <section class="panel">
+                  <header class="panel-heading">
+                    Explore Our Events !!!
+                  </header>
+                  <marquee behavior="scroll" direction="up" speed="1000s">
+                  <img src="1st_image.jpg" width="405" height="200">
+                  <img src="2nd_image.jpg" width="405" height="200">
+                  <img src="3rd_image.jpg" width="405" height="200">
+                  <img src="try1.jpg" width="405" height="200">
+                  </marquee>
+                </section>
+              </div>
+              <!-- Video -->
+              <div class="col-lg-3">
+                <video width="850" controls>
+                  <source src="C:/Users/17807/Desktop/Computer_Vision/course_project/videos/2.1M Full HD 1080P CCTV Footage.mp4" type="video/mp4">
+                  It seems your browser does not support HTML5 video.
+                </video>
+              </div>
+            </div>
+          </div>
+          
+        </section>
+        <!--main content end-->
+      </section>
+      <!-- container section end -->
+      <!-- javascripts -->
+      <script src="js/jquery.js"></script>
+      <script src="js/jquery-1.8.3.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <!-- nice scroll -->
+      <script src="js/jquery.scrollTo.min.js"></script>
+      <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+      <!-- chartjs -->
+      <script src="assets/chart-master/Chart.js"></script>
+      <!-- custom chart script for this page only-->
+      <script src="js/chartjs-custom.js"></script>
+      <!--custome script for all page-->
+      <script src="js/scripts.js"></script>
+    </body>
+  </html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+</head>
+	<body>
+		<div id="chartContainer" style="height: 370px; width: 50%;"></div>
+			<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+			<script src='https://d3js.org/d3.v4.min.js'></script>
+			<script>
+
+			d3.csv("2016.csv",function(csv){
+			var reg3=[];
+			var hs3=[];
+
+			csv.map(function(d){
+			reg3.push(d.Country);
+			hs3.push(d.HappinessScore);
+			});
+
+				var hsValue3=0;
+				var hsValued3=0;
+				var hsValuei3=0;
+				for (i=0; i<=reg3.length;i++){
+					if(reg3[i]=='Tanzania'){
+						hsValue3 = parseFloat(hs3[i]);
+					}
+				}
+
+
+				for (j=0; j<=reg3.length;j++){
+					if(reg3[j]=='Burundi'){
+						hsValued3 = parseFloat(hs3[j]);
+					}
+				}
+
+
+				for (k=0; k<=reg3.length;k++){
+					if(reg3[k]=='Syria'){
+						hsValuei3 = parseFloat(hs3[k]);
+					}
+				}
+
+
+					d3.csv("2017.csv",function(csv){
+						var region3=[];
+						var hscore3=[];
+			
+						csv.map(function(d){
+						region3.push(d.Country);
+						hscore3.push(d.HappinessScore);
+						});
+
+							var hsValued13=0;
+							var hsValue1d3=0;
+							var hsValue1i3=0;
+							for (i=0; i<=region3.length;i++){
+								if(region3[i]=='Tanzania'){
+									hsValued13 = parseFloat(hscore3[i]);
+								}
+							}
+
+							for (j=0; j<=region3.length;j++){
+								if(region3[j]=='Burundi'){
+									hsValue1d3 = parseFloat(hscore3[j]);
+								}
+							}
+
+							for (k=0; k<=region3.length;k++){
+								if(region3[k]=='Syria'){
+									hsValue1i3 = parseFloat(hscore3[k]);
+								}
+							}
+
+								d3.csv("2015.csv",function(csv){
+									var region13=[];
+									var h_score3=[];
+
+									csv.map(function(d){
+									region13.push(d.Country);
+									h_score3.push(d.HappinessScore);
+									});
+
+									var hsValue23=0;
+									var hsValued23=0;
+									var hsValuei23=0;
+									for (i=0; i<=region13.length;i++){
+										if(region13[i]=='Tanzania'){
+											hsValue23= parseFloat(h_score3[i]);
+										}
+									}
+
+
+									for (j=0; j<=region13.length;j++){
+										if(region13[j]=='Burundi'){
+											hsValued23= parseFloat(h_score3[j]);
+										}
+									}
+
+									for (k=0; k<=region13.length;k++){
+										if(region13[k]=='Syria'){
+										hsValuei23 = parseFloat(h_score3[k]);
+									}
+								}
+
+
+										var chart = new CanvasJS.Chart("chartContainer", {
+											theme:"light1",
+											//exportEnabled: true,
+											animationEnabled: true,
+											title:{
+												text: "We encourage the bottom three to buck up..."
+											},
+											axisY :{
+												includeZero: false,
+												title: "Happiness Score",
+											//suffix: "mn"
+											},
+											toolTip: {
+												shared: "true"
+											},
+											legend:{
+												cursor:"pointer",
+												fontSize: 16,
+												itemclick : toggleDataSeries
+											},
+											data: [{
+												type: "spline",
+												showInLegend: true,
+												yValueFormatString: "##.##",
+												name: "Tanzania",
+												dataPoints: [
+													{ label: "2015", y: parseFloat(hsValue23)},
+													{ label: "2016", y: parseFloat(Math.floor(hsValue3))},
+													{ label: "2017", y: parseFloat(Math.ceil(hsValued13))}				
+												]
+											},
+											{
+												type: "spline",
+												showInLegend: true,
+												yValueFormatString: "##.##",
+												name: "Burundi",
+												dataPoints: [
+												{ label: "2015", y: parseFloat(Math.floor(hsValued23))},
+												{ label: "2016", y: parseFloat(Math.ceil(hsValued3))},
+												{ label: "2017", y: parseFloat(hsValue1d3)}
+												]
+											},
+											{
+												type: "spline",
+												showInLegend: true,
+												yValueFormatString: "##.##",
+												name: "Syria",
+												dataPoints: [
+												{ label: "2015", y: parseFloat(hsValuei23)},
+												{ label: "2016", y: parseFloat(Math.ceil(hsValuei3))},
+												{ label: "2017", y: parseFloat(Math.floor(hsValue1i3))}
+												]
+											},
+
+											]
+										});
+									chart.render();
+									function toggleDataSeries(e){
+										if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+												e.dataSeries.visible = false;
+											}
+										else{
+												e.dataSeries.visible = true;
+											}
+										chart.render();
+									}
+					});
+				});
+			});
+			</script>
+		</div>
+	</body>
+</html>

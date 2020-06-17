@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+</head>
+	<body>
+		<div id="chartContainer" style="height: 370px; width: 50%;"></div>
+			<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+			<script src='https://d3js.org/d3.v4.min.js'></script>
+			<script>
+			var re=[];
+			var ec=[];
+			var fa=[];
+			var he=[];
+			var fr=[];
+			var tr=[];
+			var ge=[];
+			var dr=[];
+
+			d3.csv("2016.csv",function(csv){
+			csv.map(function(d){
+			re.push(d.Region);
+			ec.push(d.Economy);
+			fa.push(d.Family);
+			he.push(d.Health);
+			tr.push(d.Trust);
+			dr.push(d.DystopiaResidual);
+			fr.push(d.Freedom);
+			ge.push(d.Generosity);
+			});
+
+			var ecValue=0;
+			var faValue=0;
+			var heValue=0;
+			var frValue=0;
+			var trValue=0;
+			var genValue=0;
+			var dyValue=0;
+			var total=0;
+
+
+			for (i=0; i<=re.length;i++){
+				if(re[i]=='North America'){
+					faValue= faValue + parseFloat(fa[i]);
+					genValue = genValue + parseFloat(ge[i]);
+					heValue = heValue + parseFloat(he[i]);
+					ecValue = ecValue + parseFloat(ec[i]);
+					frValue = frValue + parseFloat(fr[i]);
+					trValue = trValue + parseFloat(tr[i]);
+					dyValue = dyValue + parseFloat(dr[i]);
+					total++;
+				}
+			}
+
+			var aveFa= parseFloat((faValue/total)*100);
+			var aveGe= parseFloat((genValue/total)*100);
+			var aveHe= parseFloat((heValue/total)*100);
+			var aveEc= parseFloat((ecValue/total)*100);
+			var aveFr= parseFloat((frValue/total)*100);
+			var aveTr= parseFloat((trValue/total)*100);
+			var aveDr= parseFloat((dyValue/total)*100);
+
+
+				var chart = new CanvasJS.Chart("chartContainer", {
+				theme: "light1", // "light2"
+				exportEnabled: true,
+				animationEnabled: true,
+				title: {
+					text: "See what makes North America happy"
+				},
+				data: [{
+					type: "pie",
+					startAngle: 25,
+					toolTipContent: "<b>{label}</b>: {y}%",
+					showInLegend: "true",
+					legendText: "{label}",
+					indexLabelFontSize: 16,
+					indexLabel: "{label} - {y}%",
+					dataPoints: [
+						{ y: parseFloat(aveFa), label: "Family"},
+						{ y: parseFloat(aveHe), label: "Health" },
+						{ y: parseFloat(aveGe), label: "Generosity" },
+						{ y: parseFloat(aveEc), label: "Economy" },
+						{ y: parseFloat(aveFr), label: "Freedom" },
+						{ y: parseFloat(aveTr), label: "Trust" },
+						{ y: parseFloat(aveDr), label: "Dystopia Residual" },
+					]
+				}]
+			});
+			chart.render();
+			});
+			</script>
+		</div>
+	</body>
+</html>

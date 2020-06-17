@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="World Happiness Report">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="World Happiness Report">
+
+  <title>World Happiness Report</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- full calendar css-->
+  <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+  <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
+  <!-- easy pie chart-->
+  <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+  <link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/fullcalendar.css">
+  <link href="css/widgets.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+  <link href="css/xcharts.min.css" rel=" stylesheet">
+  <link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+  <!-- =======================================================
+    Author: gauravi
+  ======================================================= -->
+</head>
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+      </div>
+      <!--logo start-->
+      <a href="index.html" class="logo">Happiness<span class="lite"> Report</span></a>
+      <!--logo end-->
+    </header>
+    <!--header end-->
+
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a class="" href="index.html">
+                          <i class="icon_house_alt"></i>
+                          <span>Dashboard</span>
+                      </a>
+          </li>
+
+          <li>
+            <a class="" href="chart-chartjs.html">
+                          <i class="icon_piechart"></i>
+                          <span>Charts</span>
+                      </a>
+          </li>
+
+            <li class="sub-menu">
+              <a class="" href="basic_table.html">
+                <i class="icon_table"></i>
+                <span>Statistics</span>   
+              </a>
+            </li>
+        </ul>
+      </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <!--overview start-->
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header">  </h16>
+            <h1 class="page-header"><i class="icon_genius"></i><b> Do us a favour, practise and spread happiness!!!</b></h7>
+            <class="page-header"><i><small><span class="lite">&#160 &#160 &#160 &#160 "Happiness is when what you think, what you say and what you do are in harmony"</span></small></i> 
+          </div>
+        </div><br><br>
+
+        <div class="row">
+          <ol class="breadcrumb">
+              <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+              <li><i class="fa fa-laptop"></i>Dashboard</li>
+            </ol>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-9 col-md-12">
+           <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2><i class="icon_clock_alt red"></i><strong>Whoa!!! Have a look at your countries happiness index...</strong></h2><br>
+                  </ul>
+              </div>
+              <div class="panel-body-map">
+                <div id="map" style="height:380px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3 table-wrapper-scroll-y my-custom-scrollbar">
+                    <body>
+                      <b>Find 2k17's global ranking here....</b>
+                      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by country name" title="Type in a name">
+                      <table id="myTable">
+                          <tr>
+                              <th style="width:10%;">Rank</th>
+                              <th style="width:10%;">Country</th>
+                          </tr>
+
+                          <td>1</td>
+                    <td colspan="3">Norway</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td colspan="3">Denmark</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td colspan="3">Iceland</td>
+                  </tr>
+
+                  <tr>
+                    <td>4</td>
+                    <td colspan="3">Switzerland</td>
+                  </tr>
+
+                  <tr>
+                    <td>5</td>
+                    <td colspan="3">Finland</td>
+                  </tr>
+
+                  <tr>
+                    <td>6</td>
+                    <td colspan="3">Netherlands</td>
+                  </tr>
+
+                  <tr>
+                    <td>7</td>
+                    <td colspan="3">Canada</td>
+                  </tr>
+
+                  <tr>
+                    <td>8</td>
+                    <td colspan="3">New Zealand</td>
+                  </tr>
+
+                  <tr>
+                    <td>9</td>
+                    <td colspan="3">Sweden</td>
+                  </tr>
+
+                  <tr>
+                    <td>10</td>
+                    <td colspan="3">Australia</td>
+                  </tr>
+
+                  <tr>
+                    <td>11</td>
+                    <td colspan="3">Israel</td>
+                  </tr>
+
+                  <tr>
+                    <td>12</td>
+                    <td colspan="3">Costa Rica</td>
+                  </tr>
+
+                  <tr>
+                    <td>13</td>
+                    <td colspan="3">Austria</td>
+                  </tr>
+
+                  <tr>
+                    <td>14</td>
+                    <td colspan="3">United States</td>
+                  </tr>
+
+                  <tr>
+                    <td>15</td>
+                    <td colspan="3">Ireland</td>
+                  </tr>
+
+                  <tr>
+                    <td>16</td>
+                    <td colspan="3">Germany</td>
+                  </tr>
+
+                  <tr>
+                    <td>17</td>
+                    <td colspan="3">Belgium</td>
+                  </tr>
+
+                  <tr>
+                    <td>18</td>
+                    <td colspan="3">Luxembourg</td>
+                  </tr>
+
+                  <tr>
+                    <td>19</td>
+                    <td colspan="3">United Kingdom</td>
+                  </tr>
+
+                  <tr>
+                    <td>20</td>
+                    <td colspan="3">Chile</td>
+                  </tr>
+
+                  <tr>
+                    <td>21</td>
+                    <td colspan="3">United Arab Emirates</td>
+                  </tr>
+
+                  <tr>
+                    <td>22</td>
+                    <td colspan="3">Brazil</td>
+                  </tr>
+          
+                  <tr>
+                    <td>23</td>
+                    <td colspan="3">Czech Republic</td>
+                  </tr>
+          
+                  <tr>
+                    <td>24</td>
+                    <td colspan="3">Argentina</td>
+                  </tr>
+          
+                  <tr>
+                    <td>25</td>
+                    <td colspan="3">Mexico</td>
+                  </tr>
+          
+                  <tr>
+                    <td>26</td>
+                    <td colspan="3">Singapore</td>
+                  </tr>
+          
+                  <tr>
+                    <td>27</td>
+                    <td colspan="3">Malta</td>
+                  </tr>
+          
+                <tr>
+                    <td>28</td>
+                    <td colspan="3">Uruguay</td>
+                  </tr>
+          
+          <tr>
+                    <td>29</td>
+                    <td colspan="3">Guatemala</td>
+                  </tr>
+          
+          <tr>
+                    <td>30</td>
+                    <td colspan="3">Panama</td>
+                  </tr>
+          
+          <tr>
+                    <td>31</td>
+                    <td colspan="3">France</td>
+                  </tr>
+          
+          <tr>
+                    <td>32</td>
+                    <td colspan="3">Thailand</td>
+                  </tr>
+          
+          <tr>
+                    <td>33</td>
+                    <td colspan="3">Taiwan Province of China</td>
+                  </tr>
+          
+          <tr>
+                    <td>34</td>
+                    <td colspan="3">Spain</td>
+                  </tr>
+          
+          <tr>
+                    <td>35</td>
+                    <td colspan="3">Qatar</td>
+                  </tr>
+          
+          <tr>
+                    <td>36</td>
+                    <td colspan="3">Colombia</td>
+                  </tr>
+          
+          <tr>
+                    <td>37</td>
+                    <td colspan="3">Saudi Arabia</td>
+                  </tr>
+          
+          <tr>
+                    <td>38</td>
+                    <td colspan="3">Trinidad and Tobago</td>
+                  </tr>
+          
+          <tr>
+                    <td>39</td>
+                    <td colspan="3">Kuwait</td>
+                  </tr>
+          
+          <tr>
+                    <td>40</td>
+                    <td colspan="3">Slovakia</td>
+                  </tr>
+          
+          <tr>
+                    <td>41</td>
+                    <td colspan="3">Bahrain</td>
+                  </tr>
+          
+          <tr>
+                    <td>42</td>
+                    <td colspan="3">Malaysia</td>
+                  </tr>
+          
+          <tr>
+                    <td>43</td>
+                    <td colspan="3">Nicaragua</td>
+                  </tr>
+          
+          <tr>
+                    <td>44</td>
+                    <td colspan="3">Ecuador</td>
+                  </tr>
+          
+          <tr>
+                    <td>45</td>
+                    <td colspan="3">El Salvador</td>
+                  </tr>
+          
+          <tr>
+                    <td>46</td>
+                    <td colspan="3">Poland</td>
+                  </tr>
+          
+          <tr>
+                    <td>47</td>
+                    <td colspan="3">Uzbekistan</td>
+                  </tr>
+          
+          <tr>
+                    <td>48</td>
+                    <td colspan="3">Italy</td>
+                  </tr>
+          
+          <tr>
+                    <td>49</td>
+                    <td colspan="3">Russia</td>
+                  </tr>
+          
+          <tr>
+                    <td>50</td>
+                    <td colspan="3">Belize</td>
+                  </tr>
+          
+          <tr>
+                    <td>51</td>
+                    <td colspan="3">Japan</td>
+                  </tr>
+          
+          <tr>
+                    <td>52</td>
+                    <td colspan="3">Lithuania</td>
+                  </tr>
+          
+          <tr>
+                    <td>53</td>
+                    <td colspan="3">Algeria</td>
+                  </tr>
+          
+          <tr>
+                    <td>54</td>
+                    <td colspan="3">Latvia</td>
+                  </tr>
+          
+          <tr>
+                    <td>55</td>
+                    <td colspan="3">South Korea</td>
+                  </tr>
+          
+          <tr>
+                    <td>56</td>
+                    <td colspan="3">Moldova</td>
+                  </tr>
+          
+          <tr>
+                    <td>57</td>
+                    <td colspan="3">Romania</td>
+                  </tr>
+          
+          <tr>
+                    <td>58</td>
+                    <td colspan="3">Bolivia</td>
+                  </tr>
+          
+          <tr>
+                    <td>59</td>
+                    <td colspan="3">Turkmenistan</td>
+                  </tr>
+          
+          <tr>
+                    <td>60</td>
+                    <td colspan="3">Kazakhstan</td>
+                  </tr>
+          
+          <tr>
+                    <td>61</td>
+                    <td colspan="3">North Cyprus</td>
+                  </tr>
+          
+          <tr>
+                    <td>62</td>
+                    <td colspan="3">Slovenia</td>
+                  </tr>
+          
+          <tr>
+                    <td>63</td>
+                    <td colspan="3">Peru</td>
+                  </tr>
+          
+          <tr>
+                    <td>64</td>
+                    <td colspan="3">Mauritius</td>
+                  </tr>
+          
+          <tr>
+                    <td>65</td>
+                    <td colspan="3">Cyprus</td>
+                  </tr>
+          
+          <tr>
+                    <td>66</td>
+                    <td colspan="3">Estonia</td>
+                  </tr>
+          
+          <tr>
+                    <td>67</td>
+                    <td colspan="3">Belarus</td>
+                  </tr>
+          
+          <tr>
+                    <td>68</td>
+                    <td colspan="3">Libya</td>
+                  </tr>
+          
+          <tr>
+                    <td>69</td>
+                    <td colspan="3">Turkey</td>
+                  </tr>
+          
+          <tr>
+                    <td>70</td>
+                    <td colspan="3">Paraguay</td>
+                  </tr>
+          
+          <tr>
+                    <td>71</td>
+                    <td colspan="3">Hong Kong S.A.R., China</td>
+                  </tr>
+          
+          <tr>
+                    <td>72</td>
+                    <td colspan="3">Philippines</td>
+                  </tr>
+          
+          <tr>
+                    <td>73</td>
+                    <td colspan="3">Serbia</td>
+                  </tr>
+          
+          <tr>
+                    <td>74</td>
+                    <td colspan="3">Jordan</td>
+                  </tr>
+          
+          <tr>
+                    <td>75</td>
+                    <td colspan="3">Hungary</td>
+                  </tr>
+          
+          <tr>
+                    <td>76</td>
+                    <td colspan="3">Jamaica</td>
+                  </tr>
+          
+          <tr>
+                    <td>77</td>
+                    <td colspan="3">Croatia</td>
+                  </tr>
+          
+          <tr>
+                    <td>78</td>
+                    <td colspan="3">Kosovo</td>
+                  </tr>
+          
+          <tr>
+                    <td>79</td>
+                    <td colspan="3">China</td>
+                  </tr>
+          
+          <tr>
+                    <td>80</td>
+                    <td colspan="3">Pakistan</td>
+                  </tr>
+          
+          <tr>
+                    <td>81</td>
+                    <td colspan="3">Indonesia</td>
+                  </tr>
+          
+          <tr>
+                    <td>82</td>
+                    <td colspan="3">Venezuela</td>
+                  </tr>
+          
+          <tr>
+                    <td>83</td>
+                    <td colspan="3">Montenegro</td>
+                  </tr>
+          
+          <tr>
+                    <td>84</td>
+                    <td colspan="3">Morocco</td>
+                  </tr>
+          
+          <tr>
+                    <td>85</td>
+                    <td colspan="3">Azerbaijan</td>
+                  </tr>
+          
+          <tr>
+                    <td>86</td>
+                    <td colspan="3">Dominican Republic</td>
+                  </tr>
+          
+          <tr>
+                    <td>87</td>
+                    <td colspan="3">Greece</td>
+                  </tr>
+          
+          <tr>
+                    <td>88</td>
+                    <td colspan="3">Lebanon</td>
+                  </tr>
+          
+          <tr>
+                    <td>89</td>
+                    <td colspan="3">Portugal</td>
+                  </tr>
+          
+          <tr>
+                    <td>90</td>
+                    <td colspan="3">Bosnia and Herzegovina</td>
+                  </tr>
+          
+          <tr>
+                    <td>91</td>
+                    <td colspan="3">Honduras</td>
+                  </tr>
+          
+          <tr>
+                    <td>92</td>
+                    <td colspan="3">Macedonia</td>
+                  </tr>
+          
+          <tr>
+                    <td>93</td>
+                    <td colspan="3">Somalia</td>
+                  </tr>
+          
+          <tr>
+                    <td>94</td>
+                    <td colspan="3">Vietnam</td>
+                  </tr>
+          
+          <tr>
+                    <td>95</td>
+                    <td colspan="3">Nigeria</td>
+                  </tr>
+          
+          <tr>
+                    <td>96</td>
+                    <td colspan="3">Tajikistan</td>
+                  </tr>
+          
+          <tr>
+                    <td>97</td>
+                    <td colspan="3">Bhutan</td>
+                  </tr>
+          
+          <tr>
+                    <td>98</td>
+                    <td colspan="3">Kyrgyzstan</td>
+                  </tr>
+          
+          <tr>
+                    <td>99</td>
+                    <td colspan="3">Nepal</td>
+                  </tr>
+          
+          <tr>
+                    <td>100</td>
+                    <td colspan="3">Mongolia</td>
+                  </tr>
+          
+          <tr>
+                    <td>101</td>
+                    <td colspan="3">South Africa</td>
+                  </tr>
+          
+          <tr>
+                    <td>102</td>
+                    <td colspan="3">Tunisia</td>
+                  </tr>
+          
+          <tr>
+                    <td>103</td>
+                    <td colspan="3">Palestinian Territories</td>
+                  </tr>
+          
+          <tr>
+                    <td>104</td>
+                    <td colspan="3">Egypt</td>
+                  </tr>
+          
+          <tr>
+                    <td>105</td>
+                    <td colspan="3">Bulgaria</td>
+                  </tr>
+          
+          <tr>
+                    <td>106</td>
+                    <td colspan="3">Sierra Leone</td>
+                  </tr>
+          
+          <tr>
+                    <td>107</td>
+                    <td colspan="3">Cameroon</td>
+                  </tr>
+          
+          <tr>
+                    <td>108</td>
+                    <td colspan="3">Iran</td>
+                  </tr>
+          
+          <tr>
+                    <td>109</td>
+                    <td colspan="3">Albania</td>
+                  </tr>
+          
+          <tr>
+                    <td>110</td>
+                    <td colspan="3">Bangladesh</td>
+                  </tr>
+          
+          <tr>
+                    <td>111</td>
+                    <td colspan="3">Namibia</td>
+                  </tr>
+          
+          <tr>
+                    <td>112</td>
+                    <td colspan="3">Kenya</td>
+                  </tr>
+          
+          <tr>
+                    <td>113</td>
+                    <td colspan="3">Mozambique</td>
+                  </tr>
+          
+          <tr>
+                    <td>114</td>
+                    <td colspan="3">Myanmar</td>
+                  </tr>
+          
+          <tr>
+                    <td>115</td>
+                    <td colspan="3">Senegal</td>
+                  </tr>
+          
+          <tr>
+                    <td>116</td>
+                    <td colspan="3">Zambia</td>
+                  </tr>
+          
+          <tr>
+                    <td>117</td>
+                    <td colspan="3">Iraq</td>
+                  </tr>
+          
+          <tr>
+                    <td>118</td>
+                    <td colspan="3">Gabon</td>
+                  </tr>
+          
+          <tr>
+                    <td>119</td>
+                    <td colspan="3">Ethiopia</td>
+                  </tr>
+          
+          <tr>
+                    <td>120</td>
+                    <td colspan="3">Sri Lanka</td>
+                  </tr>
+          
+          <tr>
+                    <td>121</td>
+                    <td colspan="3">Armenia</td>
+                  </tr>
+          
+          <tr>
+                    <td>122</td>
+                    <td colspan="3">India</td>
+                  </tr>
+          
+          <tr>
+                    <td>123</td>
+                    <td colspan="3">Mauritania</td>
+                  </tr>
+          
+          <tr>
+                    <td>124</td>
+                    <td colspan="3">Congo (Brazzaville)</td>
+                  </tr>
+          
+          <tr>
+                    <td>125</td>
+                    <td colspan="3">Georgia</td>
+                  </tr>
+          
+          <tr>
+                    <td>126</td>
+                    <td colspan="3">Congo (Kinshasa)</td>
+                  </tr>
+          
+          <tr>
+                    <td>127</td>
+                    <td colspan="3">Mali</td>
+                  </tr>
+          
+          <tr>
+                    <td>128</td>
+                    <td colspan="3">Ivory Coast</td>
+                  </tr>
+          
+          <tr>
+                    <td>129</td>
+                    <td colspan="3">Cambodia</td>
+                  </tr>
+          
+          <tr>
+                    <td>130</td>
+                    <td colspan="3">Sudan</td>
+                  </tr>
+          
+          <tr>
+                    <td>131</td>
+                    <td colspan="3">Ghana</td>
+                  </tr>
+          
+          <tr>
+                    <td>132</td>
+                    <td colspan="3">Ukraine</td>
+                  </tr>
+          
+          <tr>
+                    <td>133</td>
+                    <td colspan="3">Uganda</td>
+                  </tr>
+          
+          <tr>
+                    <td>134</td>
+                    <td colspan="3">Burkina Faso</td>
+                  </tr>
+          
+          <tr>
+                    <td>135</td>
+                    <td colspan="3">Niger</td>
+                  </tr>
+          
+          <tr>
+                    <td>136</td>
+                    <td colspan="3">Malawi</td>
+                  </tr>
+          
+          <tr>
+                    <td>137</td>
+                    <td colspan="3">Chad</td>
+                  </tr>
+          
+          <tr>
+                    <td>138</td>
+                    <td colspan="3">Zimbabwe</td>
+                  </tr>
+          
+          <tr>
+                    <td>139</td>
+                    <td colspan="3">Lesotho</td>
+                  </tr>
+          
+          <tr>
+                    <td>140</td>
+                    <td colspan="3">Angola</td>
+                  </tr>
+          
+          <tr>
+                    <td>141</td>
+                    <td colspan="3">Afghanistan</td>
+                  </tr>
+          
+          <tr>
+                    <td>142</td>
+                    <td colspan="3">Botswana</td>
+                  </tr>
+          
+          <tr>
+                    <td>143</td>
+                    <td colspan="3">Benin</td>
+                  </tr>
+          
+          <tr>
+                    <td>144</td>
+                    <td colspan="3">Madagascar</td>
+                  </tr>
+          
+          <tr>
+                    <td>145</td>
+                    <td colspan="3">Haiti</td>
+                  </tr>
+          
+          <tr>
+                    <td>146</td>
+                    <td colspan="3">Yemen</td>
+                  </tr>
+          
+          <tr>
+                    <td>147</td>
+                    <td colspan="3">South Sudan</td>
+                  </tr>
+          
+          <tr>
+                    <td>148</td>
+                    <td colspan="3">Liberia</td>
+                  </tr>
+          
+          <tr>
+                    <td>149</td>
+                    <td colspan="3">Guinea</td>
+                  </tr>
+          
+          <tr>
+                    <td>150</td>
+                    <td colspan="3">Togo</td>
+                  </tr>
+          
+          <tr>
+                    <td>151</td>
+                    <td colspan="3">Rwanda</td>
+                  </tr>
+          
+          <tr>
+                    <td>152</td>
+                    <td colspan="3">Syria</td>
+                  </tr>
+          
+          <tr>
+                    <td>153</td>
+                    <td colspan="3">Tanzania</td>
+                  </tr>
+          
+          <tr>
+                    <td>154</td>
+                    <td colspan="3">Burundi</td>
+                  </tr>
+          
+          <tr>
+                    <td>155</td>
+                    <td colspan="3">Central African Republic</td>
+                  </tr>
+                        </table>
+
+                      <script>
+                        function myFunction() {
+                          var input, filter, table, tr, td, i, txtValue;
+                          input = document.getElementById("myInput");
+                          filter = input.value.toUpperCase();
+                          table = document.getElementById("myTable");
+                          tr = table.getElementsByTagName("tr");
+                          for (i = 0; i < tr.length; i++) {
+                          td = tr[i].getElementsByTagName("td")[1];
+                            if (td) {
+                            txtValue = td.textContent || td.innerText;
+                              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                              } else {
+                                tr[i].style.display = "none";
+                              }
+                            }       
+                          }
+                        }
+                      </script> 
+                     </body>
+            </section>  
+          </div>
+        </div><br>
+        <!-- Ranking Table Ends Here -->
+
+
+        <div class="row">
+            <!-- chart morris start -->
+            <div class="col-lg-12">
+              <section class="panel">
+                <header class="panel-heading">
+                  <h3>Being happy is the best drug that has been ever invented, isn't it??.....</Char>
+                </header>
+                  <div class="panel-body">
+                        <div id="myCarousel" class="carousel slide">
+                          <!-- Carousel items -->
+                            <div class="carousel-inner">
+                              <div class="active item">
+                                  <img src="/try1.jpg" />
+                              </div>
+                              <div class="item">
+                                  <img src="/try2.jpg" />
+                              </div>
+                              <div class="item">
+                                  <img src="/wall1.jpg" />
+                              </div>
+                              <div class="item">
+                                  <img src="/wall5.jpg" />
+                              </div>
+                          </div>
+                    <!-- Carousel nav -->
+                          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                        </div>   
+
+                  <script type="text/javascript">
+                      $(document).ready(function () {
+                      $('.carousel').carousel({ interval: 3000 });
+                      });
+                  </script> 
+                  </div>
+                      </div>
+             </section>
+            </div>
+          <!-- chart morris start -->
+        </div>
+
+
+        <!-- Quotes Panel Begins-->
+        <div class="row col-md-12">
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-6 portlets">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2><strong>Quotes that would brighten up your day...</strong></h2>
+              </div><br><br><br>
+              <div class="panel-body">
+                <!--<div class="row">--> 
+                  <div class="slideshow-container col-sm-12">
+
+                    <div class="active mySlides fade">
+                        <img src="/1st_image.jpg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="/2nd_image.jpg" style="width:100%">
+                    </div>
+                  <div class="mySlides fade">
+                        <img src="/wall9.jpg" style="width:100%">
+                  </div>
+   
+                  </div>
+                  <br>
+
+              <div style="text-align:center">
+                  <span class="dot"></span> 
+                  <span class="dot"></span> 
+                  <span class="dot"></span> 
+              </div>
+
+              <script>
+                var slideIndex = 0;
+                showSlides();
+
+                function showSlides() {
+                  var i;
+                  var slides = document.getElementsByClassName("mySlides");
+                  var dots = document.getElementsByClassName("dot");
+                  for (i = 0; i < slides.length; i++) {
+                      slides[i].style.display = "none";  
+                  }
+                  slideIndex++;
+                  if (slideIndex > slides.length) {slideIndex = 1}    
+                    for (i = 0; i < dots.length; i++) {
+                      dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                  slides[slideIndex-1].style.display = "block";  
+                  dots[slideIndex-1].className += " active";
+                  setTimeout(showSlides, 2500); // Change image every 2.5 seconds
+                }
+              </script>
+               <!-- </div>-->
+              </div>
+            </div>
+          </div>
+        <!-- Events Panel Ends-->
+
+        <!-- Contact US Begins-->
+          <div class="col-md-4 portlets">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="pull-left"><b>Contact Us</b></div>
+              </div>
+
+              <div class="">
+                <h4><b> &#160 &#160 Address:</b> Little Lonsdale St, Edmonton</h4>
+                <h4><b> &#160 &#160 Telephone:</b> 780 578 59 45 416</h4>
+                <h4><b> &#160 &#160 Fax:</b> 123 456 789</h4><br>
+            </div>
+           </div>
+          </div>
+        <!-- Contact US Ends-->
+
+        <!-- Social Media Links Begins-->
+        <div class="col-md-2">
+            <div class="social-box facebook">       
+              <a href="https://www.facebook.com/itsthehappypage">
+                <i class="fa fa-facebook"></i> 
+              </a>
+              <ul>
+                <li>
+                  <strong>52k</strong>
+                  <span>followers</span>
+                </li>
+                <li>
+                  <strong>486</strong>
+                  <span>feeds</span>
+                </li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="social-box google-plus">
+              <a href="https://plus.google.com/discover">
+                <i class="fa fa-google-plus"></i> 
+              </a>
+              <ul>
+                <li>
+                  <strong>962</strong>
+                  <span>followers</span>
+                </li>
+                <li>
+                  <strong>256</strong>
+                  <span>circles</span>
+                </li>
+              </ul>
+            </div>
+      </div>
+
+
+      <div class="col-md-2">
+            <div class="social-box twitter">
+              <a href="https://twitter.com/login">
+                <i class="fa fa-twitter"></i> 
+              </a>
+              <ul>
+                <li>
+                  <strong>1562k</strong>
+                  <span>followers</span>
+                </li>
+                <li>
+                  <strong>2562</strong>
+                  <span>tweets</span>
+                </li>
+              </ul>
+            </div>
+      </div>
+    <!-- Social Media Ends-->
+        </div>
+        <!-- project team & activity end -->
+
+          <div class="row">
+              <script async type="text/javascript" src="//userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/bd2448a1dd9a50ba30a5f9ec212c2f0946a9204897e63603ff173bdcf514ae2b.js"></script>
+          </div>
+      </section>
+    </section>
+    <!--main content end-->
+  </section>
+  <!-- container section start -->
+
+  <!-- javascripts -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui-1.10.4.min.js"></script>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+  <!-- bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- nice scroll -->
+  <script src="js/jquery.scrollTo.min.js"></script>
+  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+  <!-- charts scripts -->
+  <script src="assets/jquery-knob/js/jquery.knob.js"></script>
+  <script src="js/jquery.sparkline.js" type="text/javascript"></script>
+  <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+  <script src="js/owl.carousel.js"></script>
+  <!-- jQuery full calendar -->
+  <<script src="js/fullcalendar.min.js"></script>
+    <!-- Full Google Calendar - Calendar -->
+    <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+    <!--script for this page only-->
+    <script src="js/calendar-custom.js"></script>
+    <script src="js/jquery.rateit.min.js"></script>
+    <!-- custom select -->
+    <script src="js/jquery.customSelect.min.js"></script>
+    <script src="assets/chart-master/Chart.js"></script>
+
+    <!--custome script for all page-->
+    <script src="js/scripts.js"></script>
+    <!-- custom script for this page-->
+    <script src="js/sparkline-chart.js"></script>
+    <script src="js/easy-pie-chart.js"></script>
+    <script src="js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="js/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="js/jquery-jvectormap-world-mill-en1.js"></script>
+    <script src="js/xcharts.min.js"></script>
+    <script src="js/jquery.autosize.min.js"></script>
+    <script src="js/jquery.placeholder.min.js"></script>
+    <script src="js/gdp-data.js"></script>
+    <script src="js/morris.min.js"></script>
+    <script src="js/sparklines.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script>
+      //knob
+      $(function() {
+        $(".knob").knob({
+          'draw': function() {
+            $(this.i).val(this.cv + '%')
+          }
+        })
+      });
+
+      //carousel
+      $(document).ready(function() {
+        $("#owl-slider").owlCarousel({
+          navigation: true,
+          slideSpeed: 300,
+          paginationSpeed: 400,
+          singleItem: true
+
+        });
+      });
+
+      //custom select box
+
+      $(function() {
+        $('select.styled').customSelect();
+      });
+
+      /* ---------- Map ---------- */
+  
+
+    $(function() {
+        $('#map').vectorMap({
+          map: 'world_mill_en',
+          series: {
+            regions: [{
+              values: gdpData,
+              scale: ['#000', '#000'],
+              normalizeFunction: 'polynomial'
+            }]
+          },
+          backgroundColor: '#f7eef2',
+          onLabelShow: function(e, el, code) {
+            console.log(code);
+            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+          }
+        });
+      });
+
+      $(function() {
+        $('#map1').vectorMap({
+          map: 'world_mill_en1',
+          series: {
+            regions: [{
+              values: gdpData,
+              scale: ['#000', '#000'],
+              normalizeFunction: 'polynomial'
+            }]
+          },
+          backgroundColor: '#f7eef2',
+          onLabelShow: function(e, el, code) {
+            console.log(code);
+            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+          }
+        });
+      });
+    </script>
+
+</body>
+
+</html>
