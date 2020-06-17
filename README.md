@@ -1,7 +1,7 @@
 # Web Application with Visualization Elements
 
 
-We created a visualization website on ‘World Happiness Index’ with graphs, charts, event calendar, chatbot, maps using D3.js, Chart.js, jQuery, HTML, CSS, Bootstrap.
+We created a visualization website on ‘World Happiness Index’ with graphs, charts, event calendar, chatbot, maps using D3.js, Chart.js, JavaScript, jQuery, HTML, CSS, Bootstrap.
 
 
 ## Getting Started
