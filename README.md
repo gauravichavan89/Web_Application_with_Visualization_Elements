@@ -7,7 +7,7 @@ We created a visualization website on ‘World Happiness Index’ with graphs, c
 ## Getting Started
 
 
-The following instructions shall ensure that the mini project is up and running on your local machine for
+The following instructions shall ensure that the web application is up and running on your local machine for
 testing purposes. See ‘Running the tests’ section to know how to run the assignment.
 
 Prerequisite Software Required
